@@ -1,0 +1,28 @@
+{
+	"name": "SourceDataset_udr",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer1",
+			"type": "LinkedServiceReference"
+		},
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "First name",
+				"type": "String"
+			},
+			{
+				"name": "Last name",
+				"type": "String"
+			},
+			{
+				"name": "Empid",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[Employdetails]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

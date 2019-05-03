@@ -1,0 +1,59 @@
+{
+	"name": "test2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_udr",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "[dbo].[Employdetails]"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[EMP2]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource"
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"First name": "Firstname",
+							"Last name": "Lastname",
+							"Empid": "EID"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_udr",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_udr",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
